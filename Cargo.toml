@@ -1,0 +1,35 @@
+[workspace]
+members = [
+    "sniper",
+    "analyzer",
+    "grpc-client",
+    "analyzer-protos",
+    "jito-protos",
+    "sniper-protos"
+]
+
+[workspace.dependencies]
+grpc-client = { path = "grpc-client" }
+jito-protos = { path = "jito-protos" }
+analyzer-protos = { path = "analyzer-protos" }
+sniper-protos = { path = "sniper-protos" }
+anyhow = "1.0.97"
+tokio = { version = "1", features = ["full"] }
+futures-util = "0.3.30"
+dotenvy = "0.15.7"
+log = "0.4.26"
+solana-sdk = "2.2.1"
+solana-transaction-status = "2.2.1"
+chrono = "0.4.40"
+borsh = "1.5.5"
+base64 = "0.22.1"
+yellowstone-grpc-proto = { version = "6.0.0" }
+spl-token = { version = "4.0.0", features = ["no-entrypoint"], optional = false }
+lazy_static = "1.4"
+
+# grpc
+prost = "0.12"
+prost-types = "0.12"
+tonic = { version = "0.10", features = ["tls", "tls-roots", "tls-webpki-roots"] }
+protobuf-src = "1"
+tonic-build = "0.10"

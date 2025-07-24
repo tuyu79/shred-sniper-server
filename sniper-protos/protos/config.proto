@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package config;
+
+message EmptyRequest{
+
+}
+
+message Config {
+    double max_sol = 1;
+    bool whitelist_enabled = 2;
+    double jito_fee = 3;
+    double zero_slot_buy_fee = 4;
+    double zero_slot_sell_fee = 5;
+    bool buy_enabled = 6;
+}
+
+message WhitelistConfig {
+    double profit = 1;
+    int64 avg = 2;
+    int64 count = 3;
+    int64 mid = 4;
+    int64 hold_less_5_sec_count = 5;
+    int64 min_hold = 6;
+    int64 avg_user = 7;
+    double top_3_buy = 8;
+}
+
+message CommonResponse {
+    string result = 1;
+}
+
+message BlacklistRequest{
+    string item= 1;
+}
+
+message BlackListResponse {
+    repeated string items = 1;
+}
+
+service ConfigService {
+    rpc GetConfig (EmptyRequest) returns (Config) {}
+    rpc UpdateConfig (Config) returns (CommonResponse) {}
+    rpc GetWhitelistConfig (EmptyRequest) returns (WhitelistConfig) {}
+    rpc UpdateWhitelistConfig (WhitelistConfig) returns (CommonResponse) {}
+    rpc GetBlacklist (EmptyRequest) returns (BlackListResponse) {}
+    rpc AddBlacklist (BlacklistRequest) returns (CommonResponse) {}
+    rpc RemoveBlacklist (BlacklistRequest) returns (CommonResponse) {}
+}
+

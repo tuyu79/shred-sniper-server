@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package whitelist;
+
+//   profit: f64,
+//    avg: i32,
+//    count: i32,
+//    mid: i32,
+//    hold_less_5_sec_count: i32,
+//    minhold: i32,
+//    avguser: i32,
+//    top3buy: f64,
+
+message WhitelistRequest {
+    double profit = 1;
+    int64 avg = 2;
+    int64 count = 3;
+    int64 mid = 4;
+    int64 hold_less_5_sec_count = 5;
+    int64 min_hold = 6;
+    int64 avg_user = 7;
+    double top_3_buy = 8;
+}
+
+message WhitelistItem {
+    string token_creator = 1;
+    int64 token_count = 2;
+    double avg_holding_seconds = 3;
+    double total_profit_sol = 4;
+    int64 hold_less_5_sec_count = 5;
+    int64 hold_greater_5_sec_count = 6;
+    int64 mid_hold_count = 7;
+    int64 min_holding_seconds = 8;
+    double win_rate = 9;
+    int64 latest_trade_time = 10;
+    double positive_dev_profit = 11;
+    int64 positive_dev_initial_buy = 12;
+    double profitability = 13;
+    double avg_users_per_token = 14;
+    double avg_top3_buy_per_token = 15;
+}
+
+message WhitelistResponse {
+    int64 total_creators = 1;
+    int64 total_tokens = 2;
+    repeated string filtered_creators = 3;
+    repeated WhitelistItem filtered_items = 4;
+}
+
+service WhitelistService {
+    rpc GetWhitelist (WhitelistRequest) returns (WhitelistResponse) {}
+}
+
