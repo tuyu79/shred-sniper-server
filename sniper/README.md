@@ -1,19 +1,30 @@
-# 部署
+# env example
+```
+BUY_ENABLED=false
 
-1. 复制 `[.env.example](.env.example)` 文件, 改名为 `.env`
-2. 修改配置
-    1. 更新 NONCE_KEY, PUBLIC_KEY, PRIVATE_KEY 为自己钱包的信息
-    2. JITO_RPC_ENDPOINTS 和 ZERO_SLOT_RPC_ENDPOINTS 根据自己的情况替换
-3. (可选) 如果有私有 rpc 和 grpc 可以修改 RPC_ENDPOINTS 和 YELLOWSTONE_GRPC_URL
-4. (可选) 修改手续费要通过修改代码
+NONCE_PUBKEY=""
+PRIVATE_KEY=""
+PUBLIC_KEY=""
 
+RPC_ENDPOINTS="https://solana-rpc.publicnode.com"
+YELLOWSTONE_GRPC_URL="https://solana-yellowstone-grpc.publicnode.com"
+JITO_RPC_ENDPOINTS="https://tokyo.mainnet.block-engine.jito.wtf/api/v1/transactions"
+ZERO_SLOT_RPC_ENDPOINTS="http://jp1.0slot.trade?api-key=xxx"
+JITO_SHRED_URL=http://127.0.0.1:9999
 
-# 运行测试
+WHITELIST_ENABLED=false
 
-```shell
-# 测试 process entries
-cargo test tests::test_process_entries -- --nocapture
+MAX_SOL=0.01
+JITO_FEE=0.00012
+ZERO_SLOT_BUY_FEE=0.00012
+ZERO_SLOT_SELL_FEE=0.0001
 
-# 测试 yellowstone listener
-cargo test tests::test_yellowstone_listener -- --nocapture
+WHITELIST_PROFIT=0.1
+WHITELIST_AVG=5
+WHITELIST_COUNT=1
+WHITELIST_MID=5
+WHITELIST_HOLD_LESS_5_SEC_COUNT=1
+WHITELIST_MIN_HOLD=5
+WHITELIST_AVG_USER=5
+WHITELIST_TOP_3_BUY=0.1
 ```
